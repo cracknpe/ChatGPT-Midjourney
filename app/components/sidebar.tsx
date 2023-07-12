@@ -119,9 +119,9 @@ export function SideBar(props: { className?: string }) {
       }`}
     >
       <div className={styles["sidebar-header"]}>
-        <div className={styles["sidebar-title"]}>ChatGPT-Midjourney</div>
+        <div className={styles["sidebar-title"]}>魔法小智</div>
         <div className={styles["sidebar-sub-title"]}>
-          Your own AI assistant.
+          有任何问题可咨询专属客服微信号：aigc-allen
         </div>
         <div className={styles["sidebar-logo"] + " no-dark"}>
           <ChatGptIcon />
@@ -136,13 +136,13 @@ export function SideBar(props: { className?: string }) {
           onClick={() => navigate(Path.NewChat, { state: { fromHome: true } })}
           shadow
         />
-        <IconButton
-          icon={<PluginIcon />}
-          text={shouldNarrow ? undefined : Locale.Plugin.Name}
-          className={styles["sidebar-bar-button"]}
-          onClick={() => showToast(Locale.WIP)}
-          shadow
-        />
+        {/*<IconButton*/}
+        {/*  icon={<PluginIcon />}*/}
+        {/*  text={shouldNarrow ? undefined : Locale.Plugin.Name}*/}
+        {/*  className={styles["sidebar-bar-button"]}*/}
+        {/*  onClick={() => showToast(Locale.WIP)}*/}
+        {/*  shadow*/}
+        {/*/>*/}
       </div>
 
       <div
@@ -173,11 +173,11 @@ export function SideBar(props: { className?: string }) {
               <IconButton icon={<SettingsIcon />} shadow />
             </Link>
           </div>
-          <div className={styles["sidebar-action"]}>
-            <a href={REPO_URL} target="_blank">
-              <IconButton icon={<GithubIcon />} shadow />
-            </a>
-          </div>
+          {/*<div className={styles["sidebar-action"]}>*/}
+          {/*  <a href={REPO_URL} target="_blank">*/}
+          {/*    <IconButton icon={<GithubIcon />} shadow />*/}
+          {/*  </a>*/}
+          {/*</div>*/}
         </div>
         <div>
           <IconButton
