@@ -483,35 +483,35 @@ export function Settings() {
           {/*</ListItem>*/}
         {/*</List>*/}
 
-        <List>
-          <ListItem
-            title={`MidjourneyProxy ${Locale.Midjourney.Url}`}
-            subTitle={Locale.Midjourney.SettingProxyCoverTip}
-          >
-            <input
-              type="text"
-              value={accessStore.midjourneyProxyUrl}
-              onChange={(e) => {
-                accessStore.updateMidjourneyProxyUrl(e.currentTarget.value);
-              }}
-            />
-          </ListItem>
-          <ListItem
-            title={`Midjourney ${Locale.Midjourney.ImageAgent}`}
-            subTitle={Locale.Midjourney.ImageAgentOpenTip}
-          >
-            <input
-              type="checkbox"
-              checked={accessStore.useMjImgSelfProxy}
-              onChange={(e) =>
-                updateConfig(
-                  (config) =>
-                    (accessStore.useMjImgSelfProxy = e.currentTarget.checked),
-                )
-              }
-            ></input>
-          </ListItem>
-        </List>
+        {/*<List>*/}
+        {/*  <ListItem*/}
+        {/*    title={`MidjourneyProxy ${Locale.Midjourney.Url}`}*/}
+        {/*    subTitle={Locale.Midjourney.SettingProxyCoverTip}*/}
+        {/*  >*/}
+        {/*    <input*/}
+        {/*      type="text"*/}
+        {/*      value={accessStore.midjourneyProxyUrl}*/}
+        {/*      onChange={(e) => {*/}
+        {/*        accessStore.updateMidjourneyProxyUrl(e.currentTarget.value);*/}
+        {/*      }}*/}
+        {/*    />*/}
+        {/*  </ListItem>*/}
+        {/*  <ListItem*/}
+        {/*    title={`Midjourney ${Locale.Midjourney.ImageAgent}`}*/}
+        {/*    subTitle={Locale.Midjourney.ImageAgentOpenTip}*/}
+        {/*  >*/}
+        {/*    <input*/}
+        {/*      type="checkbox"*/}
+        {/*      checked={accessStore.useMjImgSelfProxy}*/}
+        {/*      onChange={(e) =>*/}
+        {/*        updateConfig(*/}
+        {/*          (config) =>*/}
+        {/*            (accessStore.useMjImgSelfProxy = e.currentTarget.checked),*/}
+        {/*        )*/}
+        {/*      }*/}
+        {/*    ></input>*/}
+        {/*  </ListItem>*/}
+        {/*</List>*/}
 
         <List>
           {enabledAccessControl ? (
