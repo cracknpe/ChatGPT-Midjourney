@@ -194,7 +194,20 @@ export function SideBar(props: { className?: string }) {
             shadow
           />
         </div>
+
+        <div>
+          <IconButton
+              icon={<AddIcon />}
+              text={shouldNarrow ? undefined : Locale.Home.Login}
+              onClick={() => {
+                navigate(Path.Login);
+              }}
+              shadow
+          />
+        </div>
       </div>
+
+
 
       <div
         className={styles["sidebar-drag"]}
