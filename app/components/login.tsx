@@ -23,7 +23,80 @@ const items = [
 
 function LoginUI(){
 
+    const [userName,setUserName] = React.useState("");
+    const [password,setPassword] = React.useState("");
+
+    const [api, contextHolder] = notification.useNotification();
+
+    const userNameChange = (e:any) => {
+        setUserName(e.target.value);
+    };
+
+    const openNotification = (desc:string) => {
+        api.open({
+            message: '登陆通知',
+            description:desc,
+            duration: 2,
+        });
+    };
+
+    const passwordChange = (e:any) => {
+        setPassword(e.target.value);
+    };
+
+    const checkOnLogin = () => {
+
+        if(userName == "" || userName.trim() == ""){
+            openNotification("用户名不能为空");
+            return false;
+        }
+
+        if(password == "" || password.trim() == ""){
+            openNotification("密码不能为空");
+            return false;
+        }
+
+        return true;
+    };
+
+    const handleLogin = () => {
+        if(checkOnLogin()) {
+            // 定义要发送的数据
+            const data = {
+                id: 0,
+                userName: userName,
+                password: password,
+                email: "",
+                integral: 0,
+                sysCreateTime: "",
+                sysUpdateTime: "",
+                isDel: 0,
+                inviteUser: ""
+            };
+
+            // 使用 fetch 发送 POST 请求
+            fetch('https://wisdom.zeabur.app/wisdom/api/user/login', {
+                method: 'POST', // 指定请求方法为 POST
+                mode: "cors",
+                credentials: "include",
+                headers: {
+                    'Content-Type': 'application/json' // 设置请求头，指定发送的数据类型为 JSON
+                },
+                body: JSON.stringify(data) // 将 JavaScript 对象转换为 JSON 字符串
+            })
+                .then(response => response.json()) // 解析响应为 JSON
+                .then(data => {
+                    console.log(data); // 打印响应数据
+                    openNotification("登陆成功");
+                })
+                .catch(error => {
+                    console.error('Error:', error); // 打印任何错误
+                });
+        }
+    };
+
     return <div>
+                {contextHolder}
                 <div style={{ alignItems: 'center',display: 'flex', justifyContent: 'center'}}>
                     <Input
                         style={{ width: 350, justifyContent: 'center' }}
@@ -34,6 +107,8 @@ function LoginUI(){
                                 <InfoCircleOutlined style={{color: 'rgba(0,0,0,.45)'}} rev={undefined} />
                             </Tooltip>
                         }
+                        value={userName}
+                        onChange={(e) => userNameChange(e)}
                     />
                 </div>
                 <div style={{ alignItems: 'center',display: 'flex', justifyContent: 'center',marginTop:'10px'}}>
@@ -41,10 +116,12 @@ function LoginUI(){
                         style={{ width: 350, justifyContent: 'center' }}
                         placeholder="输入密码"
                         iconRender={(visible) => (visible ? <EyeTwoTone rev={undefined} /> : <EyeInvisibleOutlined rev={undefined} />)}
+                        value={password}
+                        onChange={(e) => passwordChange(e)}
                     />
                 </div>
                 <div style={{ alignItems: 'center',display: 'flex', justifyContent: 'center',marginTop:'10px'}}>
-                    <Button>登陆</Button>
+                    <Button onClick={handleLogin}>登陆</Button>
                 </div>
             </div>
 }
@@ -172,6 +249,7 @@ function RegisterUI(){
             .then(data => {
                 console.log(data); // 打印响应数据
                 handleStartClick();
+                openNotification("邮件发送成功");
             })
             .catch(error => {
                 console.error('Error:', error); // 打印任何错误
@@ -206,6 +284,7 @@ function RegisterUI(){
                 .then(response => response.json()) // 解析响应为 JSON
                 .then(data => {
                     console.log(data); // 打印响应数据
+                    openNotification("注册成功");
                 })
                 .catch(error => {
                     console.error('Error:', error); // 打印任何错误
