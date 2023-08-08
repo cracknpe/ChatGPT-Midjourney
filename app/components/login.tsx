@@ -2,6 +2,7 @@ import React from 'react';
 import { Tabs ,Input , Tooltip,Button, notification} from 'antd';
 import { CheckCircleOutlined, InboxOutlined,InfoCircleOutlined, UserOutlined, EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import Countdown, {CountdownApi} from "react-countdown";
+import { useCookies } from 'react-cookie';
 
 
 const onChange = (key: string) => {
@@ -25,6 +26,7 @@ function LoginUI(){
 
     const [userName,setUserName] = React.useState("");
     const [password,setPassword] = React.useState("");
+    const [cookies, setCookie] = useCookies(['name']);
 
     const [api, contextHolder] = notification.useNotification();
 
@@ -90,6 +92,7 @@ function LoginUI(){
                     if(data.code == 200){
                         openNotification("登陆成功");
                         window.sessionStorage.setItem("loginToken",data.data);
+                        setCookie('name', data.data, { path: '/' });
                     }
                 })
                 .catch(error => {
