@@ -160,8 +160,10 @@ function RegisterUI(){
     const mailTriggerSubmit = (email:string) => {
 
         // 使用 fetch 发送 POST 请求
-        fetch('https://wisdom.zeabur.app/wisdom/api/user/sendEmail?email=' + email, {
+        fetch('https://51eb4e65.r9.cpolar.top/wisdom/api/user/sendEmail?email=' + email, {
             method: 'POST', // 指定请求方法为 POST
+            mode: "cors",
+            credentials: "include",
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded' // 设置请求头
             },
@@ -192,8 +194,10 @@ function RegisterUI(){
             };
 
             // 使用 fetch 发送 POST 请求
-            fetch('https://wisdom.zeabur.app//wisdom/api/user/register?code='+code, {
+            fetch('https://51eb4e65.r9.cpolar.top/wisdom/api/user/register?code='+code, {
                 method: 'POST', // 指定请求方法为 POST
+                mode: "cors",
+                credentials: "include",
                 headers: {
                     'Content-Type': 'application/json' // 设置请求头，指定发送的数据类型为 JSON
                 },
