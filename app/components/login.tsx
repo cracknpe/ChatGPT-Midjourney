@@ -183,9 +183,9 @@ function RegisterUI(){
             // 定义要发送的数据
             const data = {
                 id: 0,
-                userName: {userName},
-                password: {password},
-                email: {email},
+                userName: userName,
+                password: password,
+                email: email,
                 integral: 0,
                 sysCreateTime: "",
                 sysUpdateTime: "",
