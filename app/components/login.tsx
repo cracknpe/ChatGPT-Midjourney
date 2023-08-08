@@ -87,7 +87,10 @@ function LoginUI(){
                 .then(response => response.json()) // 解析响应为 JSON
                 .then(data => {
                     console.log(data); // 打印响应数据
-                    openNotification("登陆成功");
+                    if(data.code == 200){
+                        openNotification("登陆成功");
+                        window.sessionStorage.setItem("loginToken",data.data);
+                    }
                 })
                 .catch(error => {
                     console.error('Error:', error); // 打印任何错误
@@ -284,7 +287,9 @@ function RegisterUI(){
                 .then(response => response.json()) // 解析响应为 JSON
                 .then(data => {
                     console.log(data); // 打印响应数据
-                    openNotification("注册成功");
+                    if(data.code == 200){
+                        openNotification("注册成功");
+                    }
                 })
                 .catch(error => {
                     console.error('Error:', error); // 打印任何错误
