@@ -91,8 +91,7 @@ function LoginUI(){
                     console.log(data); // 打印响应数据
                     if(data.code == 200){
                         openNotification("登陆成功");
-                        window.sessionStorage.setItem("loginToken",data.data);
-                        setCookie('name', data.data, { path: '/' });
+                        setCookie('name', data.data, { path: '/',httpOnly:true,secure:true});
                     }
                 })
                 .catch(error => {
